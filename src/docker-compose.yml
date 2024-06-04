@@ -1,0 +1,13 @@
+services:
+  frontend:
+    build: ./site
+    ports:
+      - "3000:3000"
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./out:/var/www/db # Maps ./out from host to /var/www/db in container
+    environment:
+      - DB_FILEPATH=/var/www/db
